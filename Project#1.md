@@ -1,9 +1,6 @@
-Perfect, Sherif — now we will treat you as a **real employed Data Engineer** with daily tasks, not a student.
-
-Below is your **Day-1 Production Assignment**:
 **Project #1 – Weather Data Platform (Upwork ETL Job Simulation)**
 
-This single project will teach you:
+This single project will include the following technologies:
 `API ingestion → ETL → PostgreSQL → Airflow → Data Quality → Deployment`
 
 ---
@@ -212,20 +209,4 @@ ORDER BY collected_at DESC
 LIMIT 10;
 ```
 
----
 
-# 🎯 What You Just Did (Real Job Skills)
-
-✔ Built API ETL
-✔ Designed DB schema
-✔ Automated hourly ingestion
-✔ Production-like orchestration
-✔ Deployed with Docker
-
----
-
-Tomorrow your **Day-2 assignment** will be:
-
-**Project #2 – NYC Taxi Big Data Pipeline using PySpark + Databricks**
-
-This is exactly how real data engineers work — one production pipeline at a time.
