@@ -1,9 +1,14 @@
 import pandas as pd
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 def normalize_rates(raw_data: dict) -> pd.DataFrame:
     """
     Convert raw FX API response into normalized tabular format
     """
+
+    logger.info("Normalizing FX rates")
 
     records = []
 
@@ -16,8 +21,11 @@ def normalize_rates(raw_data: dict) -> pd.DataFrame:
         })
 
     df = pd.DataFrame(records)
-    print("df\n", df)
-    
+
+
+    logger.info(
+        "Transformation complete", extra={"rows": len(df)}
+    )    
     # ---- Basic data quality checks ----
     assert not df.empty, "DataFrame is empty"
     assert df["rate"].notnull().all(), "Null rates detected"

@@ -1,6 +1,10 @@
 import os
 from sqlalchemy import create_engine, text
 from dotenv import load_dotenv
+from utils.logger import get_logger
+
+
+logger = get_logger(__name__)
 
 load_dotenv()
 
@@ -16,10 +20,14 @@ DB_URL = (
 engine = create_engine(DB_URL, future=True)
 
 
+
 def load_exchange_rates(df):
     """
     Load FX rates into PostgreSQL using UPSERT logic.
     """
+    
+    logger.info("Loading FX rates into PostgreSQL", extra={"rows": len(df)})
+
 
     upsert_sql = text("""
         INSERT INTO exchange_rates (
@@ -49,3 +57,6 @@ def load_exchange_rates(df):
 
     with engine.begin() as conn:
         conn.execute(upsert_sql, records)    
+
+    
+    logger.info("Load completed successfully")    

@@ -1,13 +1,22 @@
 import requests
 from datetime import date
+from utils.logger import get_logger
+
+logger = get_logger(__name__)
 
 API_URL= "https://api.frankfurter.app/latest"
 
 def fetch_rates(base="EUR"):
     response = requests.get(API_URL, params={"from": base}, timeout=10)
     response.raise_for_status()
+   
     data = response.json()
-    # print(data)
+   
+
+    logger.info(
+        "Fetched FX rates",
+        extra={"base": data["base"], "count": len(data["rate"])}
+    )
 
     return {
         "date": data["date"],
