@@ -1,0 +1,15 @@
+2026-01-22 07:52:22,481 | INFO | pipeline | ETL pipeline started
+2026-01-22 07:54:38,599 | INFO | pipeline | ETL pipeline started
+2026-01-22 07:54:38,877 | INFO | ingest.fetch_rates | Fetched FX rates
+2026-01-22 07:54:38,879 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-22 07:54:38,882 | INFO | transform.clean_rates | Transformation complete
+2026-01-22 07:54:38,886 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-22 07:54:39,067 | INFO | load.load_postgres | Load completed successfully
+2026-01-22 07:54:39,068 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-22 07:55:13,241 | INFO | pipeline | ETL pipeline started
+2026-01-22 07:55:13,516 | INFO | ingest.fetch_rates | Fetched FX rates
+2026-01-22 07:55:13,519 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-22 07:55:13,522 | INFO | transform.clean_rates | Transformation complete
+2026-01-22 07:55:13,525 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-22 07:55:13,701 | INFO | load.load_postgres | Load completed successfully
+2026-01-22 07:55:13,702 | INFO | pipeline | ETL pipeline finished successfully

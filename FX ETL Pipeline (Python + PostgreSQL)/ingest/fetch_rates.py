@@ -15,7 +15,7 @@ def fetch_rates(base="EUR"):
 
     logger.info(
         "Fetched FX rates",
-        extra={"base": data["base"], "count": len(data["rate"])}
+        extra={"base": data["base"], "count": len(data["rates"])}
     )
 
     return {
