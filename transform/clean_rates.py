@@ -1,4 +1,5 @@
 import pandas as pd
+
 def normalize_rates(raw_data: dict) -> pd.DataFrame:
     """
     Convert raw FX API response into normalized tabular format
