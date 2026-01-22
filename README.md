@@ -1,299 +1,188 @@
-# data-engineering-projects
-data-engineering-projects
+# FX ETL Pipeline (Python + PostgreSQL)
 
-Absolutely — here are **10 real Upwork-style Data Engineering jobs** based on *current postings* plus a **detailed step-by-step guide for how you would execute each one** in a “production-like” project using **public datasets or public APIs**. This will mimic the real daily work of a data engineer.
+A **production-style ETL pipeline** built with Python that ingests daily foreign exchange (FX) rates from a public API, transforms and validates the data, and loads it into PostgreSQL using **idempotent UPSERT logic**.
 
-> All the job descriptions below are based on actual Upwork listings in the last few days. ([Upwork][1])
-
----
-
-## ✅ **1) ETL / Data Pipelines Engineer**
-
-**Job Scope:** Build scalable ETL/ELT pipelines using Python and pipelines workflows; ingest JSON data and load into PostgreSQL. ([Upwork][1])
-
-### **How to practice (step-by-step)**
-
-**Goal:** Build ETL that pulls public API data → cleans → loads into PostgreSQL.
-
-**Public Data**
-
-* *OpenWeatherMap API* for weather data (free tier)
-* *PostgreSQL* on your local machine or cloud
-
-**Steps**
-
-1. **API access:**
-   ⚙ Register for OpenWeatherMap and get API key.
-
-2. **Extract:**
-
-   ```python
-   import requests
-   res = requests.get("https://api.openweathermap.org/data/2.5/weather?q=Cairo&appid={KEY}")
-   weather_json = res.json()
-   ```
-
-3. **Transform:**
-
-   * Normalize JSON to flatten keys (pandas.json_normalize)
-   * Clean temperature units or convert timestamps to readable datetime.
-
-4. **Load:**
-
-   * Connect to PostgreSQL with psycopg2
-   * Create table schema for city, temperature, humidity, date.
-   * Upsert new records on each run.
-
-5. **Scheduling:**
-
-   * Add cron or Apache Airflow DAG to run every hour.
-
-6. **Verify:**
-
-   * Validate latest records in SQL.
+This project is intentionally designed to reflect **real-world data engineering practices**, not one-off scripts.
 
 ---
 
-## ✅ **2) Suspicious Engagement Patterns (Data Engineer + Python)**
+## 📌 Project Overview
 
-**Job Scope:** Detect patterns in periodic engagement metrics and store them for analysis. ([Upwork][1])
+**Scenario**
+Analytics teams often require reliable, daily FX rates to support reporting and financial analysis. This pipeline automates the full lifecycle:
 
-### **How to practice**
-
-**Goal:** Ingest simulated engagement metrics → detect anomalies → save results.
-
-**Public Data**
-
-* *Twitter API v2* (or public COVID case time series if Twitter limited)
-* Use Python libraries: pandas, sqlalchemy
-
-**Steps**
-
-1. **Extract:**
-
-   * Use Twitter API (or CSV of time series) to load unseen metrics.
-
-2. **Transform:**
-
-   * Compute rolling stats: mean, std
-   * Define anomalies if value > mean + 3 * std.
-
-3. **Load:**
-
-   * Save results in a database (PostgreSQL or SQLite).
-
-4. **Visualization:**
-
-   * Plot anomalies via matplotlib/seaborn as report.
-
-5. **Deployment:**
-
-   * Wrap in a Python script scheduled hourly.
+1. **Ingest** FX rates from an external API
+2. **Transform** semi-structured JSON into normalized tabular data
+3. **Validate** data quality assumptions
+4. **Load** data safely into PostgreSQL
+5. Support **re-runs without duplication** (idempotency)
 
 ---
 
-## ✅ **3) Healthcare Platform (AWS + PostgreSQL + API)**
+## 🧱 Architecture
 
-**Job Scope:** Integrate API with AWS and RPA workflows for data ingestion, maintain PostgreSQL. ([Upwork][1])
-
-### **Practice using public AWS services**
-
-**Goal:** Pull FHIR public health API data → store in AWS RDS Postgres.
-
-**Public Dataset**
-
-* *US CDC API* for health data (open API)
-
-**Steps**
-
-1. Setup AWS RDS Postgres (free tier).
-2. Write AWS Lambda in Python to pull CDC API daily.
-3. Transform fields into consistent schema.
-4. Insert transformed records into RDS.
-5. (Optional) Add AWS Step Functions for workflow orchestration.
-6. Monitor Lambda metrics via CloudWatch.
+```
+API (Frankfurter)
+   ↓
+Ingestion (Python requests)
+   ↓
+Transformation (Pandas)
+   ↓
+Validation (assertions)
+   ↓
+PostgreSQL (UPSERT)
+```
 
 ---
 
-## ✅ **4) Databricks Data Engineer**
+## 🛠️ Tech Stack
 
-**Job Scope:** Use Databricks + PySpark to build data pipelines. ([Upwork][1])
-
-### **Practice**
-
-**Goal:** Process large CSV public dataset with PySpark.
-
-**Public Data**
-
-* *NYC Taxi Trips dataset* (CSV files on AWS S3)
-
-**Steps**
-
-1. **Provision Databricks Community Edition**
-2. Load CSV from S3 into DataFrame.
-3. Clean and partition by date.
-4. Write to Delta Lake tables.
-5. Create notebooks to query and transform data into summary tables (rides per day, revenue per borough).
-6. Add jobs schedule in Databricks.
+* **Python 3.11**
+* **PostgreSQL 16**
+* **Docker & Docker Compose**
+* **Pandas**
+* **SQLAlchemy + psycopg2**
+* **python-dotenv**
 
 ---
 
-## ✅ **5) Analytics Engineer (PostgreSQL + Python)**
+## 📁 Project Structure
 
-**Job Scope:** Build analytics dashboard support; ingest data and make ready for BI. ([Upwork][1])
-
-### **Practice**
-
-**Goal:** Build data for dashboards from public source.
-
-**Public Data**
-
-* *NYC 311 Service Requests* (open data)
-
-**Steps**
-
-1. Extract CSV from NYC data portal.
-2. Load to PostgreSQL with staging schema.
-3. Transform into analytical tables: aggregated service request types per borough per date.
-4. Validate data quality with SQL tests (null checks).
-5. Expose results via REST API for a dashboard.
-
----
-
-## ✅ **6) Databricks + PySpark ETL Pipeline**
-
-**Job Scope:** Build PySpark pipelines on Databricks. ([Upwork][1])
-
-### **Practice**
-
-**Goal:** Streaming simulation using micro-batches.
-
-**Public Data**
-
-* *Github Archive dataset* (big log files)
-
-**Steps**
-
-1. Subscribe to dataset, load to Databricks.
-2. Write streaming PySpark job to parse each event.
-3. Aggregate by event type.
-4. Store results in a table or visualization dashboard.
+```
+fx_etl/
+│
+├── ingest/
+│   └── fetch_rates.py        # API ingestion
+├── transform/
+│   └── clean_rates.py        # Normalization & data quality checks
+├── load/
+│   └── load_postgres.py      # PostgreSQL UPSERT loader
+│
+├── db/
+│   └── init.sql              # Database schema
+├── config/
+│   └── settings.yaml         # (reserved for future use)
+│
+├── logs/                     # (reserved for logging)
+├── main.py                   # Pipeline entry point
+├── docker-compose.yml        # PostgreSQL service
+├── requirements.txt
+├── .env                      # Environment variables (not committed)
+└── README.md
+```
 
 ---
 
-## ✅ **7) Permit Data Collection (ETL)**
+## 🗄️ Database Schema
 
-**Job Scope:** Build pipeline that collects building permit data from counties. ([Upwork][1])
+```sql
+CREATE TABLE exchange_rates (
+    rate_date DATE NOT NULL,
+    base_currency VARCHAR(3) NOT NULL,
+    target_currency VARCHAR(3) NOT NULL,
+    rate NUMERIC(12,6) NOT NULL,
+    source VARCHAR(50),
+    created_at TIMESTAMP DEFAULT NOW(),
+    PRIMARY KEY (rate_date, base_currency, target_currency)
+);
+```
 
-### **Practice**
-
-**Goal:** Collect local building permit data from US City open data portals.
-
-**Public Data**
-
-* *Chicago Building Permits* (open dataset)
-
-**Steps**
-
-1. Extract permit CSV.
-2. Load into staging tables.
-3. Clean incrementally (remove duplicates).
-4. Load into analytics database.
-5. Create summary tables.
+* Composite primary key enables **UPSERT logic**
+* Prevents duplicates on re-runs
 
 ---
 
-## ✅ **8) Lead Engineer – Pipeline Build (HIPAA)**
+## ⚙️ Setup & Run
 
-**Job Scope:** Design pipelines and integrate third-party APIs (sensitive domain). ([Upwork][1])
+### 1️⃣ Start PostgreSQL (Docker)
 
-### **Practice**
+```bash
+docker compose up -d
+```
 
-**Goal:** Practice integrating a **protected API simulation**.
+### 2️⃣ Create Virtual Environment & Install Dependencies
 
-**Public Data**
+```bash
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-* *CMS Health Provider API* (no real PHI, just mimic HIPAA process)
+### 3️⃣ Configure Environment Variables
 
-**Steps**
+Create a `.env` file:
 
-1. Write Python ETL job with OAuth2.
-2. Fetch incremental records.
-3. Encrypt sensitive fields at rest using database encryption.
-4. Audit log ETL ingestion.
-
----
-
-## ✅ **9) Lead Databricks Data Engineer (40hr/week)**
-
-**Job Scope:** Full-time ETL + migrations. ([Upwork][1])
-
-### **Practice**
-
-**Goal:** Perform an end-to-end ETL with data lake + warehousing.
-
-**Public Data**
-
-* *UCI Machine Learning Repository datasets* (multiple tables)
-
-**Steps**
-
-1. Ingest multiple CSVs into a Delta Lake.
-2. Join and transform normalized tables.
-3. Load into Snowflake or BigQuery for analytics.
-4. Add data quality tests.
+```
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=fx_dw
+DB_USER=etl_user
+DB_PASSWORD=etl_pass
+```
 
 ---
 
-## ✅ **10) Python Probabilistic Forecasting Pipeline**
+### 4️⃣ Run the Pipeline
 
-**Job Scope:** Build forecasting pipeline with DB. ([Upwork][1])
+```bash
+python main.py
+```
 
-### **Practice**
-
-**Goal:** Use public sports or economic datasets.
-
-**Public Data**
-
-* *FIFA World Cup dataset on Kaggle* or *U.S. unemployment rate from FRED API*
-
-**Steps**
-
-1. Extract time-series data.
-2. Build forecasting model (e.g., Prophet).
-3. Persist results to PostgreSQL.
-4. Package as a scheduled pipeline.
+You can safely run the pipeline **multiple times** — data will be updated, not duplicated.
 
 ---
 
-## 📌 **What You’ll Learn Practically**
+## ✅ Data Quality Checks
 
-By implementing these 10 tasks you will *actually replicate what real job postings ask for*, including:
+Implemented during transformation:
 
-✅ API extraction and ingestion
-✅ ETL pipeline design
-✅ Data transformation
-✅ Orchestration (cron/Airflow/Databricks jobs)
-✅ Cloud services (AWS RDS/Lambda or Databricks)
-✅ Data modeling for analytics
-✅ Monitoring & deployment
+* Dataset must not be empty
+* No null exchange rates
+* All rates must be positive
 
-This is basically what companies require of data engineers — not superficial toy tasks but **productionized systems**. ([Upwork][1])
+Failures stop the pipeline early to avoid corrupting downstream data.
 
 ---
 
-## 📈 **Final Tip**
+## 🔁 Idempotency
 
-For each of the above:
+The loader uses PostgreSQL `ON CONFLICT DO UPDATE`:
 
-✔ Use **GitHub repo** to version code
-✔ Write **unit tests** for pipeline logic
-✔ Add **README + deployment instructions** like a real project
-✔ Schedule jobs in Airflow or Databricks scheduling
+* Same `(date, base, target)` → **UPDATE**
+* New combination → **INSERT**
+
+This makes the pipeline **safe to retry** and suitable for scheduling.
 
 ---
 
-If you want, I can generate **full boilerplate templates** (Airflow DAG, Python connectors, SQL schemas) for *each of these 10 tasks* so you can start building them immediately. Just ask!
+## 🚀 Why This Project Matters
 
-[1]: https://www.upwork.com/freelance-jobs/data-engineering/?utm_source=chatgpt.com "Data Engineer Freelance Jobs: Work Remote & Earn Online"
+Unlike many tutorial-style ETL examples, this project demonstrates:
 
+* Clear separation of ingest / transform / load layers
+* Explicit SQL instead of black-box helpers
+* Transaction safety
+* Environment-based configuration
+* Production-ready data modeling
+
+---
+
+## 🔮 Possible Extensions
+
+* Add structured logging
+* Schedule with cron or Apache Airflow
+* Add incremental loading logic
+* Extend to ELT (warehouse-side transformations)
+* Add unit tests for transformations
+
+---
+
+## 👤 Author
+
+Built as part of a hands-on data engineering learning track.
+
+---
+
+## 📄 License
+
+MIT License
