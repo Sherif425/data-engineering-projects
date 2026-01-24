@@ -1,0 +1,26 @@
+2026-01-24 14:00:13,321 | INFO | pipeline | ETL pipeline started
+2026-01-24 14:00:13,650 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 14:00:13,653 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 14:00:13,656 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 14:00:13,659 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 14:00:13,818 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 14:00:13,819 | INFO | pipeline | FX ETL pipeline finished | rows_fetched=29 | rows_loaded=29 | duration_seconds=0.5 | status=SUCCESS
+2026-01-24 14:01:49,288 | INFO | pipeline | ETL pipeline started
+2026-01-24 14:01:49,674 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 14:01:49,677 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 14:01:49,680 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 14:01:49,683 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 14:01:49,912 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 14:02:18,156 | INFO | pipeline | ETL pipeline started
+2026-01-24 14:02:18,430 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 14:02:18,433 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 14:02:18,436 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 14:02:18,439 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 14:02:18,625 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 14:03:18,638 | INFO | pipeline | ETL pipeline started
+2026-01-24 14:03:18,933 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 14:03:18,936 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 14:03:18,939 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 14:03:18,942 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 14:03:19,392 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 14:03:19,392 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.75 |status=SUCCESS

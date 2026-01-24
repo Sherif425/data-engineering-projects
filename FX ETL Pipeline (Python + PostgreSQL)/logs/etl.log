@@ -63,3 +63,47 @@
 2026-01-24 13:14:47,566 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
 2026-01-24 13:14:47,768 | INFO | load.load_postgres | Load completed successfully
 2026-01-24 13:14:47,769 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-24 13:32:52,784 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:32:53,548 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:32:53,551 | ERROR | pipeline | FX ETL pipeline failed
+Traceback (most recent call last):
+  File "/home/sherif/data-engineering-projects/FX ETL Pipeline (Python + PostgreSQL)/main.py", line 20, in run_pipeline
+    df = normalize_rates(raw_data)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sherif/data-engineering-projects/FX ETL Pipeline (Python + PostgreSQL)/transform/clean_rates.py", line 11, in normalize_rates
+    logger.info("Normalizing FX rates", extra={"rows": len(df)})
+                                                           ^^
+UnboundLocalError: cannot access local variable 'df' where it is not associated with a value
+2026-01-24 13:37:05,186 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:37:05,478 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:37:05,480 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 13:37:05,483 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 13:37:05,489 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 13:37:05,756 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 13:37:05,757 | INFO | pipeline | FX ETL pipeline finished
+2026-01-24 13:38:18,456 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:38:18,809 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:38:18,812 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 13:38:18,815 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 13:38:18,818 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 13:38:19,031 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 13:38:19,032 | INFO | pipeline | FX ETL pipeline finished
+2026-01-24 13:40:51,572 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:40:52,057 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:40:52,060 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 13:40:52,063 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 13:40:52,066 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 13:40:52,266 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 13:40:52,267 | INFO | pipeline | FX ETL pipeline finished
+2026-01-24 13:56:18,739 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:56:19,129 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:56:19,132 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 13:56:19,135 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 13:56:19,139 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 13:56:19,344 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 13:58:10,415 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:58:10,749 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:58:10,753 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 13:58:10,757 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 13:58:10,760 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 13:58:10,960 | INFO | load.load_postgres | Load completed successfully
