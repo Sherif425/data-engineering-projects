@@ -8,7 +8,7 @@ def normalize_rates(raw_data: dict) -> pd.DataFrame:
     Convert raw FX API response into normalized tabular format
     """
 
-    logger.info("Normalizing FX rates")
+    logger.info("Normalizing FX rates", extra={"rows": len(df)})
 
     records = []
 

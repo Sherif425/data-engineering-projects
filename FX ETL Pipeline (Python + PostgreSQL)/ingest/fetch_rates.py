@@ -13,9 +13,13 @@ def fetch_rates(base="EUR"):
     data = response.json()
    
 
+    # logger.info(
+    #     "Fetched FX rates",
+    #     extra={"base": data["base"], "count": len(data["rates"])}
+    # )
+
     logger.info(
-        "Fetched FX rates",
-        extra={"base": data["base"], "count": len(data["rates"])}
+        f"Fetched FX rates | base={data['base']} | count={len(data['rates'])}"
     )
 
     return {

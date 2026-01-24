@@ -16,7 +16,7 @@ def run_pipeline():
     # print("\n\nDataFrame Head:\n\n", df.head())
     # print("\n\n Row Count: \n\n", df.count())
 
-    logger.info("ETL pipeline finished successfully")
+    logger.info("ETL pipeline finished successfully", extra={"row": len(df)})
 
 if __name__ == "__main__":
     run_pipeline()

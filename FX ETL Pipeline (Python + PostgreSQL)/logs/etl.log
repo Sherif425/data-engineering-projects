@@ -34,3 +34,32 @@
 2026-01-24 09:06:23,331 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
 2026-01-24 09:06:23,610 | INFO | load.load_postgres | Load completed successfully
 2026-01-24 09:06:23,611 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-24 09:30:38,652 | INFO | pipeline | ETL pipeline started
+2026-01-24 09:31:01,027 | INFO | pipeline | ETL pipeline started
+2026-01-24 09:31:01,323 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 09:31:01,326 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-24 09:31:01,329 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 09:31:01,332 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 09:31:01,517 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 09:31:01,519 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-24 13:13:53,917 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:13:54,349 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:13:54,352 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-24 13:13:54,356 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 13:13:54,359 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 13:13:54,563 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 13:13:54,564 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-24 13:14:21,356 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:14:21,636 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:14:21,639 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-24 13:14:21,642 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 13:14:21,646 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 13:14:21,930 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 13:14:21,931 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-24 13:14:47,168 | INFO | pipeline | ETL pipeline started
+2026-01-24 13:14:47,557 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 13:14:47,560 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-24 13:14:47,563 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 13:14:47,566 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 13:14:47,768 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 13:14:47,769 | INFO | pipeline | ETL pipeline finished successfully
