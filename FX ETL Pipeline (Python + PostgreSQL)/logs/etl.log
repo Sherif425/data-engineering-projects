@@ -13,3 +13,24 @@
 2026-01-22 07:55:13,525 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
 2026-01-22 07:55:13,701 | INFO | load.load_postgres | Load completed successfully
 2026-01-22 07:55:13,702 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-24 09:04:47,764 | INFO | pipeline | ETL pipeline started
+2026-01-24 09:04:48,269 | INFO | ingest.fetch_rates | Fetched FX rates
+2026-01-24 09:04:48,271 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-24 09:04:48,274 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 09:04:48,277 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 09:04:48,508 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 09:04:48,509 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-24 09:05:54,080 | INFO | pipeline | ETL pipeline started
+2026-01-24 09:05:54,369 | INFO | ingest.fetch_rates | Fetched FX rates
+2026-01-24 09:05:54,371 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-24 09:05:54,374 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 09:05:54,377 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 09:05:54,585 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 09:05:54,586 | INFO | pipeline | ETL pipeline finished successfully
+2026-01-24 09:06:22,985 | INFO | pipeline | ETL pipeline started
+2026-01-24 09:06:23,322 | INFO | ingest.fetch_rates | Fetched FX rates
+2026-01-24 09:06:23,325 | INFO | transform.clean_rates | Normalizing FX rates
+2026-01-24 09:06:23,328 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 09:06:23,331 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
+2026-01-24 09:06:23,610 | INFO | load.load_postgres | Load completed successfully
+2026-01-24 09:06:23,611 | INFO | pipeline | ETL pipeline finished successfully
