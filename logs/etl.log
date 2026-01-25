@@ -24,3 +24,55 @@
 2026-01-24 14:03:18,942 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
 2026-01-24 14:03:19,392 | INFO | load.load_postgres | Load completed successfully
 2026-01-24 14:03:19,392 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.75 |status=SUCCESS
+2026-01-24 16:22:31,589 | INFO | pipeline | ETL pipeline started
+2026-01-24 16:22:32,436 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 16:22:32,448 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 16:22:32,458 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 16:22:32,466 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-24 16:22:32,670 | ERROR | pipeline | FX ETL pipeline failed
+Traceback (most recent call last):
+  File "/home/sherif/data-engineering-projects/FX ETL Pipeline (Python + PostgreSQL)/main.py", line 23, in run_pipeline
+    load_exchange_rates(df)
+  File "/home/sherif/data-engineering-projects/FX ETL Pipeline (Python + PostgreSQL)/load/load_exchange_rates.py", line 46, in load_exchange_rates
+    with engine.raw_connection() as conn:
+TypeError: '_ConnectionFairy' object does not support the context manager protocol
+2026-01-24 16:28:23,492 | INFO | pipeline | ETL pipeline started
+2026-01-24 16:28:24,283 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 16:28:24,287 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 16:28:24,290 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 16:28:24,293 | ERROR | pipeline | FX ETL pipeline failed
+Traceback (most recent call last):
+  File "/home/sherif/data-engineering-projects/FX ETL Pipeline (Python + PostgreSQL)/main.py", line 23, in run_pipeline
+    load_exchange_rates(df)
+  File "/home/sherif/data-engineering-projects/FX ETL Pipeline (Python + PostgreSQL)/load/load_exchange_rates.py", line 2, in load_exchange_rates
+    logger.info(f"Loading {len(df)} rows into PostgreSQL (batch)")
+    ^^^^^^
+NameError: name 'logger' is not defined
+2026-01-24 16:29:29,441 | INFO | pipeline | ETL pipeline started
+2026-01-24 16:29:30,242 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 16:29:30,245 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 16:29:30,248 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 16:29:30,252 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-24 16:29:30,473 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-24 16:29:30,475 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=1.03 |status=SUCCESS
+2026-01-24 18:06:02,981 | INFO | pipeline | ETL pipeline started
+2026-01-24 18:06:03,425 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 18:06:03,428 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 18:06:03,431 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 18:06:03,434 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-24 18:06:03,737 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-24 18:06:03,738 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.76 |status=SUCCESS
+2026-01-24 18:06:47,173 | INFO | pipeline | ETL pipeline started
+2026-01-24 18:06:47,637 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 18:06:47,640 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 18:06:47,644 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 18:06:47,647 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-24 18:06:47,892 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-24 18:06:47,893 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.72 |status=SUCCESS
+2026-01-24 18:07:25,830 | INFO | pipeline | ETL pipeline started
+2026-01-24 18:07:26,116 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-24 18:07:26,119 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-24 18:07:26,123 | INFO | transform.clean_rates | Transformation complete
+2026-01-24 18:07:26,126 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-24 18:07:26,330 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-24 18:07:26,330 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.5 |status=SUCCESS

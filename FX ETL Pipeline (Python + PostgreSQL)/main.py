@@ -1,7 +1,7 @@
 import time
 from ingest.fetch_rates import fetch_rates
 from transform.clean_rates import normalize_rates
-from load.load_postgres import load_exchange_rates
+from load.load_exchange_rates import load_exchange_rates
 from utils.logger import get_logger
 
 logger = get_logger("pipeline")
