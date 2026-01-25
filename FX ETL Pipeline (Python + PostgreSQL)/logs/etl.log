@@ -107,3 +107,38 @@ UnboundLocalError: cannot access local variable 'df' where it is not associated 
 2026-01-24 13:58:10,757 | INFO | transform.clean_rates | Transformation complete
 2026-01-24 13:58:10,760 | INFO | load.load_postgres | Loading FX rates into PostgreSQL
 2026-01-24 13:58:10,960 | INFO | load.load_postgres | Load completed successfully
+2026-01-25 14:46:11,085 | INFO | pipeline | ETL pipeline started
+2026-01-25 14:46:11,813 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-25 14:46:11,816 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-25 14:46:11,820 | INFO | transform.clean_rates | Transformation complete
+2026-01-25 14:46:11,825 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-25 14:46:12,093 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-25 14:46:12,095 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=1.01 |status=SUCCESS
+2026-01-25 14:52:02,744 | INFO | pipeline | ETL pipeline started
+2026-01-25 14:52:03,180 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-25 14:52:03,188 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-25 14:52:03,198 | INFO | transform.clean_rates | Transformation complete
+2026-01-25 14:52:03,204 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-25 14:52:03,396 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-25 14:52:03,397 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.65 |status=SUCCESS
+2026-01-25 14:53:02,510 | INFO | pipeline | ETL pipeline started
+2026-01-25 14:53:02,813 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-25 14:53:02,815 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-25 14:53:02,818 | INFO | transform.clean_rates | Transformation complete
+2026-01-25 14:53:02,821 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-25 14:53:03,006 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-25 14:53:03,007 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.5 |status=SUCCESS
+2026-01-25 14:54:02,244 | INFO | pipeline | ETL pipeline started
+2026-01-25 14:54:02,580 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-25 14:54:02,583 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-25 14:54:02,586 | INFO | transform.clean_rates | Transformation complete
+2026-01-25 14:54:02,588 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-25 14:54:02,779 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-25 14:54:02,780 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.54 |status=SUCCESS
+2026-01-25 14:55:02,945 | INFO | pipeline | ETL pipeline started
+2026-01-25 14:55:03,275 | INFO | ingest.fetch_rates | Fetched FX rates | base=EUR | count=29
+2026-01-25 14:55:03,279 | INFO | transform.clean_rates | Normalizing FX rates started.
+2026-01-25 14:55:03,282 | INFO | transform.clean_rates | Transformation complete
+2026-01-25 14:55:03,285 | INFO | load.load_exchange_rates | Loading 29 rows into PostgreSQL (batch)
+2026-01-25 14:55:03,479 | INFO | load.load_exchange_rates | Batch load completed | rows_loaded=29
+2026-01-25 14:55:03,479 | INFO | pipeline | FX ETL pipeline finished |rows_fetched=29 | rows_loaded=29 | duration_seconds=0.53 |status=SUCCESS

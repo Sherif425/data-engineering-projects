@@ -1,14 +1,16 @@
-#/bin/bash
-#Fail fast
+#!/bin/bash
+
+# Fail fast
 set -e
 
-# Absoulte path to this script
-PROJECT_DIR="/home/sherif/data-engineering-projects/FX\ ETL\ Pipeline\ \(Python\ +\ PostgreSQL\)"
+PROJECT_DIR="/home/sherif/data-engineering-projects/FX ETL Pipeline (Python + PostgreSQL)"
 VENV_DIR="$PROJECT_DIR/venv"
-PYTHON="$VENV_DIR/bin/python"
+
+# Go to project directory (IMPORTANT)
+cd "$PROJECT_DIR"
 
 # Activate virtual environment
 source "$VENV_DIR/bin/activate"
 
 # Run the ETL script
-$PYTHON "$PROJECT_DIR/main.py"
+python main.py
